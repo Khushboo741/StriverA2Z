@@ -1,0 +1,15 @@
+class Solution: 
+    def selectionSort(self, arr):
+        #code here
+        #NeetCode
+        
+        for i in range(len(arr)):
+            minpos=i
+            for j in range(i,len(arr)):
+                if arr[j]<arr[minpos]:
+                    minpos=j
+                    
+            temp=arr[i]
+            arr[i]=arr[minpos]
+            arr[minpos]=temp
+        
