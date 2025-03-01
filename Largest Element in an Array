@@ -1,0 +1,21 @@
+
+from typing import List
+
+
+class Solution:
+    def largest(self, arr):
+        # code here
+        maxi=self.Helper(arr,0)
+        return maxi
+        
+    def Helper(self,arr,index):
+        if index==len(arr)-1:
+            return arr[index]
+        
+        misa=self.Helper(arr,index+1)
+        if index==len(arr)-1:
+            return arr[index]
+        if misa>arr[index]:
+            return misa
+        else:
+            return arr[index]
