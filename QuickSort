@@ -3,6 +3,7 @@
 class Solution:
     #Function to sort a list using quick sort algorithm.
     #NeetCode
+    #Partition logic in place
     def quickSort(self,arr,low,high):
         # code here
         # if len(arr)<=1:
