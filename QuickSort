@@ -1,0 +1,31 @@
+#User function Template for python3
+
+class Solution:
+    #Function to sort a list using quick sort algorithm.
+    #NeetCode
+    def quickSort(self,arr,low,high):
+        # code here
+        # if len(arr)<=1:
+        #     return arr
+         if low < high:
+            # Getting the partition index
+            pi = self.partition(arr, low, high)
+
+            # Recursively sorting left and right halves
+            self.quickSort(arr, low, pi - 1)
+            self.quickSort(arr, pi + 1, high)
+            
+    
+    def partition(self,arr,low,high):
+        # code here
+        p=arr[high]
+        
+        L=[x for x in arr[low:high] if x<=p] #Everything included but not including the last index 
+        R=[x for x in arr[low:high] if x>p]
+        
+        # L=quickSort(L)
+        # R=quickSort(R)
+        
+        # return L+[p]+R
+        arr[low:high+1]=L+[p]+R # Placing the pivot in correct position
+        return low+len(L)# Newpivot index
