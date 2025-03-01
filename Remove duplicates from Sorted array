@@ -1,0 +1,13 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        #NeetCode
+        if not nums:
+            return 0
+        l=1 #index 1
+        for r in range(1,len(nums)):
+            if nums[r]!=nums[r-1]:
+                nums[l]=nums[r]
+                l+=1
+                #Jab tak r length of nums tak phuchega tab tak l se pehle ke sare elements right tarike se ho gaye honge
+            #for loop har time r ko increment kar raha so hume manually r+=1 nahi likhna padega
+        return l  
