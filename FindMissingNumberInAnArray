@@ -1,0 +1,11 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        #NeetCode
+        result=len(nums)
+
+        # [0,len] 0 to n
+        for i in range(len(nums)):
+            result+=(i-nums[i])
+            #Yaha hum 0 to n-1 tak he add kar pa rahe hain
+            #[0,len-1]
+        return result
