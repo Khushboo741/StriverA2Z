@@ -1,0 +1,13 @@
+class Solution:
+    def getSecondLargest(self, arr):
+        # Code Here
+        largest=-1
+        slargest=-1
+        for i in range(len(arr)):
+            if arr[i]>largest:
+                slargest=largest
+                largest=arr[i]
+            elif arr[i]>slargest and arr[i]<largest:
+                slargest=arr[i]
+        return slargest
+            
