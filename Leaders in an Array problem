@@ -1,0 +1,12 @@
+class Solution:
+    def leaders(self, arr):
+        # code here
+        #NeetCode
+        result=[arr[len(arr)-1]]
+        
+        maxi=arr[len(arr)-1]
+        for i in range(len(arr)-2,-1,-1): #Loop from right to left
+            if maxi<=arr[i]:
+                maxi=arr[i]
+                result.append(maxi)
+        return result[::-1] #Reverse array
