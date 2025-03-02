@@ -1,0 +1,25 @@
+# User function Template for python3
+
+class Solution:
+    def longestSubarray(self, arr, k):  
+        # code here
+        n=len(arr)
+        
+        sumMap={}
+        s=0
+        ml=0
+        for i in range(n):
+            s+=arr[i]
+            if s==k:
+                ml=max(ml,i+1)
+                
+            rem=s-k
+            
+            if rem in sumMap:
+                length=i-sumMap[rem]
+                ml=max(ml,length)
+                
+            if s not in sumMap:
+                sumMap[s]=i
+                
+        return ml
