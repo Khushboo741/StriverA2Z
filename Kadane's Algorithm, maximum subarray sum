@@ -1,0 +1,12 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        #NeetCode
+        maxSub=nums[0] #Default value and 0 nahi de sakte ye bcoz array me negative value bhi ho sakti hain first wali so kuch to lena hoga maxsum me
+        curSum=0
+
+        for n in nums:
+            if curSum<0:
+                curSum=0
+            curSum+=n
+            maxSub=max(maxSub,curSum)
+        return maxSub
