@@ -1,0 +1,34 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        #NeetCode
+        l,r=0,len(matrix)-1 #Bcoz number of columns is same as number of rows
+
+        while l<r:
+            for i in range(r-l): #Iterate through entire row except last element
+            #Let index of l,r is 0 3 so r-l=3-0=3
+            #5 1 9 11
+            #2 4 8 10
+            #13 3 6 7
+            #15 14 12 16 
+            #Jaise isme pehle outer boundary me rotate huya 5 11 15 16 phir 1 10 12 13 phir 9 7 14 2 mtlb 3 baar rotation ho raha 
+                top,bottom=l,r
+
+                #Save the topleft
+                topLeft=matrix[top][l+i] #l me +i taki aage pohoch sake wo
+
+                #Move bottom left into top Left
+                matrix[top][l+i]=matrix[bottom-i][l] #bottom me bhi -i taki upar ki taraf shift ho jaye new inner rotation ke liye
+
+                #Move bottom right into bottom left
+                matrix[bottom-i][l]=matrix[bottom][r-i]
+
+                #Move top right into bottom right
+                matrix[bottom][r-i]=matrix[top+i][r]
+
+                #Move top left into top right
+                matrix[top+i][r]=topLeft
+            r-=1
+            l+=1
