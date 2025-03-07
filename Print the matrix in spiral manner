@@ -16,9 +16,16 @@ class Solution:
             for i in range(top,bottom):
                 result.append(matrix[i][right-1])#-1 bcoz right is out of bound
             right-=1
-
+            
+            #Jaise kebal ek row ya column rh gaya isliye ye check jaruri hain 
+            # 1 2 3
+            #OR
+            # 1
+            # 2
+            # 3
             if not(left<right and top<bottom):
                 break
+
             #Get every i in the bottom view
             for i in range(right-1,left-1,-1):#In the reverse order
                 result.append(matrix[bottom-1][i])
