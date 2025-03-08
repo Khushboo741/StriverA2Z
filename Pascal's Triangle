@@ -1,0 +1,13 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        # NeetCode
+
+        result=[[1]]
+
+        for i in range(numRows-1): #-1 kyuki pehle he ek row bana li humne upar [1] wali
+            temp=[0]+ result[-1]+[0] #Starting and ending me assuming wala 0 dalna
+            row=[]
+            for j in range(len(result[-1])+1): #Next row ki length last row yani previous row se +1 hogi
+                row.append(temp[j]+temp[j+1])
+            result.append(row)
+        return result
