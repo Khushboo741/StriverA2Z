@@ -8,7 +8,7 @@ class Solution:
         n=len(A)
         xr=0
         mpp=defaultdict(int)
-        mpp[xr]=1 #Taki x = xr ^ B 6 ^ 6 = 0 mpp[0] = 1, ek subarray mil gaya
+        mpp[xr]=1 # Stores 0,1 here 0 as prefix and 1 as count Taki x = xr ^ B 6 ^ 6 = 0 mpp[0] = 1, ek subarray mil gaya
         count=0
         
         for i in range(n):
