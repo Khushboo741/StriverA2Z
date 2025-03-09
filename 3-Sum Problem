@@ -1,0 +1,28 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # NeetCode
+
+        result=[] #As we returning list of list
+        nums.sort()
+
+        for i,a in enumerate(nums):
+            if i>0 and a==nums[i-1]: # i>0 means it should not be first value in input array , Same value as before 
+                continue
+            L,R=i+1,len(nums)-1
+            while L<R:
+                threeSum=a+nums[L]+nums[R]
+                if threeSum>0:
+                    R-=1
+                elif threeSum<0:
+                    L+=1
+                else:
+                    result.append([a,nums[L],nums[R]])
+
+                    # [-2,-2,0,0,2,-2]
+                    #  L            R
+                    # Solution mil gaya so L+=1 se L -2 pe aa gaya and L and R ab same ho gaye duplicate value so dubara L++ karo taki L 0 pe aa jaye
+                    #So
+                    L+=1
+                    while nums[L]==nums[L-1] and L<R:
+                        L+=1
+        return result
