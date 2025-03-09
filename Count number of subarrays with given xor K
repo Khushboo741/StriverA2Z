@@ -17,3 +17,7 @@ class Solution:
             count+=mpp[x]
             mpp[xr]+=1
         return count
+
+# Agar xr ya x hashmap (mpp) me exist nahi karta, toh defaultdict(int) ka fayda yeh hota hai ki automatically uska default value 0 assign ho jata hai. Matlab: mpp[xr] += 1 ka matlab hai agar xr hashmap me exist nahi karta, toh pehle uska value 0 rahega, phir +1 ho jayega.
+
+
