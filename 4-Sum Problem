@@ -1,0 +1,35 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        # NeetCode
+
+        nums.sort()
+        result,quad=[],[]
+
+        def kSum(k,startIndex,target):
+            # Non Base Case
+            if k!=2:
+                for i in range(startIndex,len(nums)-k+1): #+1 for non inclusive in loop
+                   #[1,1,1,1,1]  
+                   #We don't want to use same value multiple times
+                    if i>startIndex and nums[i]==nums[i-1]:
+                        continue
+                    quad.append(nums[i])
+                    kSum(k-1,i+1,target-nums[i])
+                    quad.pop()
+                return
+
+                #Base Case, two sum II
+            L,R=startIndex,len(nums)-1
+            while L<R:
+                if nums[L]+nums[R]<target:
+                    L+=1
+                elif nums[L]+nums[R]>target:
+                    R-=1
+                else:
+                    result.append(quad+[nums[L],nums[R]])
+                    L+=1
+                    while L<R and nums[L]==nums[L-1]:
+                        L+=1
+        kSum(4,0,target)
+        return result
+                
