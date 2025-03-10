@@ -1,0 +1,24 @@
+class Solution:
+    def findTwoElement( self,arr): 
+        # code here
+        # Striver
+        n=len(arr)
+        
+        SN=(n*(n+1))//2
+        S2N=(n*(n+1)*(2*n+1))//6
+        
+        x,y=0,0
+        for i in range(n):
+            x+=arr[i]
+            y+=arr[i]*arr[i]
+            
+        val1=x-SN
+        val2=y-S2N
+        
+        val2=val2//val1
+        
+        a=(val1+val2)//2
+        b=a-val1
+        
+        return [a,b]
+        
