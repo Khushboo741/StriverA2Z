@@ -1,0 +1,29 @@
+
+class Solution:
+    def getFloorAndCeil(self, x: int, arr: list) -> list:
+        
+        # Striver
+        arr.sort()  # Sort the array first
+        floor, ceil = -1, -1
+        
+        # Finding Floor
+        l, h = 0, len(arr) - 1
+        while l <= h:
+            mid = (l + h) // 2
+            if arr[mid] <= x:  # Floor condition
+                floor = arr[mid]
+                l = mid + 1
+            else:
+                h = mid - 1
+
+        # Finding Ceil
+        l, h = 0, len(arr) - 1
+        while l <= h:
+            mid = (l + h) // 2
+            if arr[mid] >= x:  # Ceil condition
+                ceil = arr[mid]
+                h = mid - 1
+            else:
+                l = mid + 1
+
+        return [floor, ceil]
