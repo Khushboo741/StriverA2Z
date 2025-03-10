@@ -1,0 +1,16 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        #NeetCode
+
+        l,r=0,len(nums)-1
+
+        while l<=r:
+            # [1] Here l and r both at 1 so isliye equals to bhi lagaya
+            m=l+(r-l)//2 #To avoid the overflow
+            if nums[m]>target:
+                r=m-1
+            elif nums[m]<target:
+                l=m+1
+            else:
+                return m
+        return -1 #If not find the result
