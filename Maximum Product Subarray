@@ -1,0 +1,15 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        # NeetCode
+        result=max(nums) # 0->[-1] 
+        curMin,curMax=1,1
+
+        for n in nums:
+            if n==0:
+                curMin,curMax=1,1
+                continue
+            temp=curMax*n
+            curMax=max(temp,n*curMin,n) #[-1,8] isme to 8 he hoga max kyuki
+            curMin=min(temp,n*curMin,n) #[-1,8] isme -8 minimum chahiye so isliye
+            result=max(result,curMax)
+        return result
