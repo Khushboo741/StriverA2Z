@@ -1,0 +1,19 @@
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        # NeetCode
+        # Time : O(logn) and Space: O(1)
+
+        l,r=0,len(nums)-1
+
+        while l<=r:
+            m=l+((r-l)//2)
+            # m-1 and m+1 for checking mid out of bounds edge case
+            if ((m-1<0 or nums[m-1]!=nums[m]) and ((m+1==len(nums) or nums[m]!=nums[m+1]))):
+            # If m-1 is out of bounds then it will not equals to left neighbour bcoz it does not have left neighbour and if m+1 is out of bound means does not have right neighbour 
+                return nums[m]
+                #If m-1 is index 3 so left me index 0 1 2 honge so 3 values honge index 3 ke left me so leftsize=m-1
+            leftSize=m-1 if nums[m-1]==nums[m] else m #Get the left size of the array to figure out which side of array has an odd number of values
+            if leftSize%2:
+                r=m-1
+            else:
+                l=m+1
