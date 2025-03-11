@@ -1,0 +1,19 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        # NeetCode
+        # Time: Log(n)
+        l,r=0,len(nums)-1
+
+        while l<=r:
+            midi=(l+r)//2
+            if target==nums[midi]:
+                return midi
+            if target>nums[midi]:
+                l=midi+1
+            else:
+                r=midi-1
+        return l
+
+        # If Target=1
+        # [2] here L ,M and R on 2 but 1<2 so R crosses L and R phir left me out of bound index chala gaya
+        # If target=3 then L right me out of bound chala jayega L=1 index aayega bcoz [2,3] so 2 at index 0 and 3 at index 1
