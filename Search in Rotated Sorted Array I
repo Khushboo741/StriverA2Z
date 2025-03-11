@@ -1,0 +1,23 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        # NeetCode
+        l,r=0,len(nums)-1
+
+        #[1] so use equals to sign also in while loop
+        while l<=r:
+            m=(l+r)//2
+            if target==nums[m]:
+                return m
+            #Left sorted portion of array
+            if nums[l]<=nums[m]:
+                if target>nums[m] or target<nums[l]:
+                    l=m+1
+                else:
+                    r=m-1
+            #R Right Sorted portion of array
+            else:
+                if target<nums[m] or t>nums[r]:
+                    r=m-1
+                else:
+                    l=m+1
+        return -1
