@@ -1,0 +1,20 @@
+def getFloorAndCeil(a, n, x):
+    # Write your code here.
+
+    #Striver
+    Floor=-1
+    Ceil=-1
+    l=0
+    r=n-1
+    while l<=r:
+        m=l+(r-l)//2
+
+        if a[m]<x:
+            Floor=a[m]
+            l=m+1
+        elif a[m]>x:
+            Ceil=a[m]
+            r=m-1
+        else:
+            return [a[m],a[m]]
+    return [Floor,Ceil]
