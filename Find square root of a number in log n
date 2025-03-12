@@ -1,0 +1,21 @@
+#User function Template for python3
+
+#Complete this function
+class Solution:
+    def floorSqrt(self, n): 
+    #Your code here
+        #Striver
+        l,r=0,n
+        result=0
+        
+        while l<=r:
+            m=l+(r-l)//2 # So this will never overflow
+            
+            if m**2>n:
+                r=m-1
+            elif m**2<n:
+                l=m+1
+                result=m
+            else:
+                return m
+        return result
