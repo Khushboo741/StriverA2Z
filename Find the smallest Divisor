@@ -1,0 +1,24 @@
+class Solution:
+    # Striver
+
+    def sumByD(self,nums,divi):
+        n=len(nums)
+        total_sum=0
+        for i in range(n):
+            total_sum+=math.ceil(nums[i]/divi)
+        return total_sum
+
+    def smallestDivisor(self, nums: List[int], threshold: int) -> int:
+        n=len(nums)
+        if n>threshold:
+            return -1
+        l=1
+        h=max(nums)
+
+        while l<=h:
+            m=l+(h-l)//2
+            if self.sumByD(nums,m)<=threshold:
+                h=m-1
+            else:
+                l=m+1
+        return l
