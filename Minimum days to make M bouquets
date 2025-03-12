@@ -1,0 +1,33 @@
+class Solution:
+
+    def canMakeBouq(self,bloomDay,midi,k):
+        bouqCount=0
+        consecutive_count=0 #Adjacent flowers
+
+        for i in range(len(bloomDay)):
+            if bloomDay[i]<=midi:
+                consecutive_count+=1
+            else:
+                consecutive_count=0
+            
+            if consecutive_count==k:
+                bouqCount+=1
+                consecutive_count=0
+        return bouqCount
+    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+        
+        # CodeStoryWithMIK
+        start_day=0
+        end_day=max(bloomDay)
+
+        minDays=-1
+         # T(C)=O(n*log(max_day))
+        while(start_day<=end_day): #log(max_day)
+            midi=start_day+(end_day-start_day)//2 # l+(r-l)//2
+
+            if (self.canMakeBouq(bloomDay,midi,k)>=m): # O(n)
+                minDays=midi
+                end_day=midi-1
+            else:
+                start_day=midi+1
+        return minDays
