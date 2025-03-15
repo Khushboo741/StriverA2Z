@@ -1,0 +1,27 @@
+
+# Striver
+def canWePlace(stalls,dist,cows):
+    n=len(stalls)
+    cntCows=1
+    cord=stalls[0] # Cord is a coordinate
+    for i in range(1,n):
+        if stalls[i]-cord>=dist:
+            cntCows+=1 # Place the next cow
+            cord=stalls[i] # Update the last location
+        if cntCows>=cows:
+            return True
+    return False
+
+def aggressiveCows(stalls, k):
+    # Write your code here.
+    n=len(stalls)
+    stalls.sort()
+    l,h=1,stalls[n-1]-stalls[0]
+    while l<=h:
+        midi=l+(h-l)//2
+        if canWePlace(stalls,midi,k):
+            l=midi+1
+        else:
+            h=midi-1
+    return h
+    
