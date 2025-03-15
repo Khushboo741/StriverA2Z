@@ -1,0 +1,31 @@
+# Striver
+def countStudents(ar,pages):
+    n=len(ar)
+    students=1
+    pagesStudent=0
+    for i in range(n):
+        if pagesStudent+ar[i]<=pages:
+            #Add pages to current student
+            pagesStudent+=ar[i]
+        else:
+            students+=1
+            pagesStudent=ar[i]
+    return students
+def findPages(arr: [int], n: int, m: int) -> int:
+
+    # Write your code here
+    # Return the minimum number of pages
+    if m>n: #Book allocation impossible
+        return -1;
+    
+    l=max(arr)
+    h=sum(arr)
+    while l<=h:
+        midi=l+(h-l)//2
+        students=countStudents(arr,midi)
+        if students>m:
+            l=midi+1
+        else:
+            h=midi-1
+    return l
+        
