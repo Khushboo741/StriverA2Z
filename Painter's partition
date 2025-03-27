@@ -1,0 +1,26 @@
+def findLargestMinDistance(boards:list, k:int):
+    # Write your code here
+    # Return an integer
+
+    #NeetCode
+    #Similar to Split array - Largest Sum
+    def canPaint(largest):
+        subarray=0
+        curSum=0
+        for n in boards:
+            curSum+=n
+            if curSum>largest:
+                subarray+=1
+                curSum=n
+        return subarray+1<=k
+
+    l,r=max(boards),sum(boards)
+    result=r
+    while l<=r:
+        midi=l+(r-l)//2
+        if canPaint(midi):
+            result=midi
+            r=midi-1
+        else:
+            l=midi+1
+    return result
